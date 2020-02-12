@@ -1,0 +1,19 @@
+{
+  "name": "Web Chat Client",
+  "version": "1.0.0",
+  "authors": [
+    "David"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-socket-io": "^0.7.0",
+    "socket.io-client": "^2.3.0"
+  }
+}

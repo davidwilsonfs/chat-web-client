@@ -1,0 +1,19 @@
+<div class="container container-border">
+    <div class="padding-border">
+        <div class="row">
+            <div class="col-md-5">
+                <div ><h6 class="mb-0">Channel</h6></div>
+                <div ><p class="font-italic mb-0 text-small break-line">{{$ctrl.alias}}</p></div>
+            </div>
+            <div class="col-md-3">
+                <div ><h6 class="mb-0">Nº users</h6></div>
+                <div><p class="font-italic mb-0 text-small">{{$ctrl.amountUsers}}</p></div>
+            </div>
+            <div class="col-md-4 button-align">
+                <button class="btn btn-primary btn-sm btn-block" ng-disabled="$ctrl.joinDisable" type="button" ng-click="$ctrl.joinRoom()">Join</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>

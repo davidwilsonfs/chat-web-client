@@ -1,0 +1,24 @@
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+.messages-box {
+  height: 350px;
+  overflow-y: scroll;
+}
+
+.chat-box {
+  height: 700px;
+  margin-bottom: -50px;
+  overflow-y: scroll;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+input::placeholder {
+  font-size: 0.9rem;
+  color: #999;
+}

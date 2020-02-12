@@ -1,0 +1,36 @@
+
+.channel {
+    font-size: x-large;
+    color: #383d41;
+    font-weight: bold;
+}
+
+.channel-name {
+  font-size: medium;
+}
+
+.amount-users {
+    font-size: x-large;
+    color: #383d41;
+    font-weight: bold;
+}
+
+
+.button-align {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.container-border {
+  border: 1px solid #383d41;
+  border-radius: 8px;
+}
+
+.padding-border {
+    padding: 13px !important;
+}
+
+.break-line {
+  word-break: break-all;
+}
