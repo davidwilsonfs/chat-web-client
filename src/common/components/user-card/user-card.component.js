@@ -6,13 +6,10 @@ export const UserCardComponent = {
   },
   template,
   controller: class UserCardController {
-    constructor(UsersService) {
+    constructor() {
       'ngInject';
-      this.usersService = UsersService;
     }
 
-    $onInit() {
-      console.log(this.user);
-    }
+    $onInit() {}
   },
 };

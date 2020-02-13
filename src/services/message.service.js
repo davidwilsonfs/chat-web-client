@@ -1,21 +1,19 @@
 export class MessageService {
-  constructor($http, EndPoints, SocketEvent, ChannelsService, UsersService) {
+  constructor($http, EndPoints, UsersService, ExceptionService) {
     ('ngInject');
 
     this.$http = $http;
-    this.SocketEvent = SocketEvent;
     this.EndPoints = EndPoints;
-    this.ChannelsService = ChannelsService;
     this.UsersService = UsersService;
+    this.exceptionService = ExceptionService;
   }
 
   getMessagesByChannel() {
-    const channel = this.ChannelsService.activeChannel;
-    const user = this.UsersService.user;
+    const { username } = this.UsersService.user;
 
     return this.$http({
       method: 'get',
-      url: `${this.EndPoints.MESSAGES}/channel/${channel.name}/${user.createdAt}`,
-    });
+      url: `${this.EndPoints.MESSAGES}/user/${username}`,
+    }).catch(this.exceptionService.catcher);
   }
 }

@@ -1,12 +1,22 @@
 import { User } from '../models/user.model';
 
 export class UsersService {
-  constructor(socket, $http, $rootScope, SocketEvent, SessionService, SessionKey, EndPoints) {
+  constructor(
+    socket,
+    $http,
+    $rootScope,
+    ExceptionService,
+    SocketEvent,
+    SessionService,
+    SessionKey,
+    EndPoints
+  ) {
     ('ngInject');
     this.$rootScope = $rootScope;
     this.socket = socket;
     this.SocketEvent = SocketEvent;
     this.SessionService = SessionService;
+    this.exceptionService = ExceptionService;
     this.SessionKey = SessionKey;
     this.$http = $http;
     this.EndPoints = EndPoints;
@@ -30,7 +40,7 @@ export class UsersService {
     return this.$http({
       method: 'get',
       url: `${this.EndPoints.USERS}/available/${username}`,
-    });
+    }).catch(this.exceptionService.catcher);
   }
 
   registerUser(data) {
@@ -38,7 +48,7 @@ export class UsersService {
       method: 'post',
       url: `${this.EndPoints.USERS}/join`,
       data,
-    });
+    }).catch(this.exceptionService.catcher);
   }
 
   getExistingUsersRequest() {

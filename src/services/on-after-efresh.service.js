@@ -1,20 +1,10 @@
 export class OnAfterRefreshService {
-  constructor($rootScope, $window, SessionService, SocketEvent, SessionKey, socket) {
+  constructor(SessionService, SocketEvent, SessionKey, socket) {
     ('ngInject');
     this.SessionKey = SessionKey;
     this.sessionService = SessionService;
     this.socket = socket;
     this.SocketEvent = SocketEvent;
-
-    $window.onbeforeunload = event => {
-      // event.preventDefault();
-      // console.log(event);
-      // event.returnValue = '';
-      // const returnValue = 'Do you really want to close?';
-      // event.returnValue = returnValue;
-      // return returnValue;
-      // var event = $rootScope.$broadcast('onBeforeUnload', confirmation);
-    };
 
     this.afterRefresh();
   }

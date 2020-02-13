@@ -6,11 +6,9 @@ export const CarrouselComponent = {
   },
   template,
   controller: class CarrouselController {
-    constructor($location, ImagesService, $rootScope) {
+    constructor(ImagesService) {
       'ngInject';
-      this.$location = $location;
       this.imagesService = ImagesService;
-      this.$rootScope = $rootScope;
     }
 
     $onInit() {
@@ -25,18 +23,21 @@ export const CarrouselComponent = {
     }
 
     next() {
-      this.counter = (this.counter + 1) % 30;
+      this.counter = (this.counter + 1) % 31;
+
       this.changeEvent();
     }
 
     prev() {
-      this.counter = (this.counter - 1) % 30;
+      this.counter = this.counter - 1;
+
+      this.counter = this.counter === -1 ? 30 : this.counter;
+
       this.changeEvent();
     }
 
     changeEvent() {
       this.imageSelected = this.images[this.counter];
-      //  this.$rootScope.$broadcast('ImageSelected', this.imageChoiced);
     }
   },
 };

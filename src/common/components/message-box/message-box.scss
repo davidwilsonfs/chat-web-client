@@ -3,22 +3,31 @@
   font-size: 0.9rem;
 }
 
-.messages-box {
-  height: 350px;
-  overflow-y: scroll;
-}
-
-.chat-box {
-  height: 700px;
-  margin-bottom: -50px;
-  overflow-y: scroll;
-}
 
 .rounded-lg {
   border-radius: 0.5rem;
 }
 
+.message{
+  transform: rotate(180deg);
+}
+
 input::placeholder {
   font-size: 0.9rem;
   color: #999;
+}
+
+.isSender {
+  text-align: left;
+  width: 50%;
+}
+
+.isReceiver {
+  text-align: right;
+  width: 50%;
+}
+
+.media-body> span{
+  font-size: 16px;
+  font-weight: 900;
 }

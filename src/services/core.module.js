@@ -6,6 +6,7 @@ import { MessageService } from './message.service';
 import { SessionService } from './session.service';
 import { AuthService } from './auth.service';
 import { ImagesService } from './images.service';
+import { NotificationsService } from './notifications.service';
 import { OnAfterRefreshService } from './on-after-efresh.service';
 
 export const CoreModule = angular
@@ -27,4 +28,5 @@ export const CoreModule = angular
   .service('AuthService', AuthService)
   .service('OnAfterRefreshService', OnAfterRefreshService)
   .service('ImagesService', ImagesService)
+  .service('NotificationsService', NotificationsService)
   .service('SessionService', SessionService).name;

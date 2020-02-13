@@ -1,5 +1,4 @@
 import angular from 'angular';
-import { Visualizer } from '@uirouter/visualizer';
 import configRouter from './app.config';
 import handleRoutingErrors from './guard/handler-router.guard';
 
@@ -22,7 +21,4 @@ angular
     AppChat,
   ])
   .config(configRouter)
-  .run(handleRoutingErrors)
-  .run(function($uiRouter) {
-    // $uiRouter.plugin(Visualizer);
-  });
+  .run(handleRoutingErrors);

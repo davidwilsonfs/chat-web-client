@@ -45,8 +45,4 @@ export class SigninController {
       this.attemptToLogin(obj);
     }
   }
-
-  imageSelect(image) {
-    console.log(image);
-  }
 }

@@ -1,17 +1,21 @@
 import uirouter from 'angular-ui-router';
 import ngResource from 'angular-resource';
 import 'ngstorage';
+import 'angular-animate';
 import { FooterModule } from './components/footer/footer.module';
 import { HeaderModule } from './components/header/header.module';
 import { BoxMessageModule } from './components/message-box/message-box.module';
 import { ChannelCardModule } from './components/channel-card/channel-card.module';
 import { UserCardModule } from './components/user-card/user-card.module';
 import { CarrouselModule } from './components/corrousel/carrousel.module';
+import { ChatBoxModule } from './components/chat-box/chat-box.module';
+import { ErrorhandlerModule } from './handler-error/handler-error.module';
 
 export const CommonModule = angular
   .module('app.commmon', [
     uirouter,
     'ngStorage',
+    'ngAnimate',
     ngResource,
     FooterModule,
     HeaderModule,
@@ -19,6 +23,8 @@ export const CommonModule = angular
     BoxMessageModule,
     UserCardModule,
     CarrouselModule,
+    ChatBoxModule,
+    ErrorhandlerModule,
   ])
   .constant('SocketEvent', {
     ADD_USER: 'addUser',
@@ -31,6 +37,7 @@ export const CommonModule = angular
     USER_LEFT: 'userLeft',
     USER_TYPING: 'userTyping',
     USER_STOPPED_TYPING: 'stopTyping',
+    NOTIFY_TYPING_EVENT: 'notifyTypingEvent',
     RECONNECT: 'reconnect',
     REFRESH_PAGE: 'refreshPage',
     UPDATE_DATA_AFTER_REFRESH: 'updateDataRefresh',

@@ -1,0 +1,70 @@
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  width: 5px;
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 1em;
+  background-color: #ddd;
+  outline: 1px solid slategrey;
+  border-radius: 1rem;
+}
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+.messages-box {
+  height: 84vh;
+  overflow-y: scroll;
+}
+
+.channel-box {
+  height: 79vh;
+  overflow-y: scroll;
+}
+
+.chat-box {
+  height: 89vh;
+  overflow-y: scroll;
+  transform: rotate(180deg);
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+input::placeholder {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.pb-0 {
+  padding-bottom: 0px;
+}
+
+.header-typing {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: rotate(180deg);
+  text-align: center;
+  width: 100%;
+  display: table;
+  height: 50px;
+}
+
+.typing-badge {
+  padding: 10px 20px !important;
+  margin-top: 20px;
+  vertical-align: middle;
+  background-color: #4b6b8e !important;
+}

@@ -1,9 +1,6 @@
 import routes from './chat.router';
-import { ChatController } from './chat.controller';
+import { AppChatGeneral } from './chat-general/chat-general.module';
 import { AppChatRoom } from './chat-room/chat-room.module.js';
-import './chat.scss';
 
-export const AppChat = angular
-  .module('app.chat', [AppChatRoom])
-  .controller('ChatController', ChatController)
-  .config(routes).name;
+export const AppChat = angular.module('app.chat', [AppChatGeneral, AppChatRoom]).config(routes)
+  .name;

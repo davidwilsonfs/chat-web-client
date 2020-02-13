@@ -6,13 +6,9 @@
 
                 <!-- Users box-->
 
-
-
                 <div class="p-2 flex-fill bd-highlight">
-
                     <button class="btn btn-primary" ng-click="chatRoomCtrl.leaveRoom()" type="submit">Sair da ROOM</button>
                 </div>
-
 
                 <div class="bg-gray px-4 py-2 bg-light">
                     <p class="h5 mb-0 py-1">Usuários no chat {{chatRoomCtrl.users.length}}</p>
@@ -26,23 +22,11 @@
                         </a>
                     </div>
                 </div>
-
-
             </div>
         </div>
         <!-- Chat Box-->
-        <div class="p-2 flex-grow-1 bd-highlight">
-            <div class="px-4 py-5 chat-box bg-white">
-                <app-message-box message="message" ng-repeat="message in chatRoomCtrl.messages"></app-message-box>
-            </div>
-
-            <!-- Typing area -->
-            <form class="form-inline mt-2 mt-md-0" ng-submit="chatRoomCtrl.send()">
-                <input class="form-control mr-sm-2" type="text" ng-model="chatRoomCtrl.message.text"
-                    placeholder="Message" aria-label="Message">
-                <button class="btn btn-default" type="submit">send</button>
-            </form>
-
+        <div class="flex-grow-1 bd-highlight full-height pb-0">
+            <app-chat-box></app-chat-box>
         </div>
     </div>
 </div>

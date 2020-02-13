@@ -1,10 +1,11 @@
 
 
-<div class="media w-50 mb-3" ng-class="{'ml-auto': $ctrl.isSender}">
-    <p>{{$ctrl.message.user.username}}</p>
+<div class="media w-50 mb-3 message" ng-class="{'ml-auto': !$ctrl.isSender}">
+    
     <img ng-src="{{$ctrl.urlImage}}"
         alt="user" width="50" class="rounded-circle">
     <div class="media-body" ng-class="{ 'ml-3': !$ctrl.isSender}">
+        <span>{{$ctrl.message.user.username}}</span>
         <div class="rounded py-2 px-3 mb-2" ng-class="{ 'bg-primary': !$ctrl.isSender, 'bg-light': $ctrl.isSender} ">
             <p class="text-small mb-0 " ng-class="{ 'text-white': !$ctrl.isSender, 'text-muted': $ctrl.isSender} ">{{$ctrl.message.text}}</p>
         </div>

@@ -26,17 +26,6 @@ export class SessionService {
     return null;
   }
 
-  authenticate() {
-    isAuthenticated = this.getToken;
-    if (isAuthenticated) {
-      //If authenticated, return anything you want, probably a user object
-      return true;
-    } else {
-      //Else send a rejection
-      return $q.reject('Not Authenticated');
-    }
-  }
-
   clear() {
     sessionStorage.clear();
   }

@@ -3,8 +3,11 @@
         
     <div class="media-body ml-4">
         <div class="d-flex align-items-center justify-content-between mb-1">
-            <h6 class="mb-0">Username</h6><small class="small font-weight-bold">{{$ctrl.user.created_at | date : "mediumDate"}}</small>
+            <h6 class="mb-0">{{$ctrl.user.username}}</h6>
+            <div class="d-flex align-items-start flex-column bd-highlight mb-3">
+                <small class="small font-weight-bold">{{$ctrl.user.created_at | date : "MMM dd, yyyy"}}</small>
+            </div>
         </div>
-        <p class="font-italic mb-0 text-small">{{$ctrl.user.username}}</p>
+        <p class="font-italic mb-0 text-small">{{$ctrl.user.channel.alias}}</p>
     </div>
 </div>

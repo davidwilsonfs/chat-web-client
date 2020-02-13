@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  web_chat_front:
+    build: 
+      context: .
+    container_name: 'web_chat_front'
+    ports:
+      - 3000:80
+
+  

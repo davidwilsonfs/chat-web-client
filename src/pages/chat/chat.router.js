@@ -1,4 +1,4 @@
-import chatTemplate from './chat.html';
+import chatGeneralTemplate from './chat-general/chat-general.html';
 import chatRoomTemplate from './chat-room/chat-room.html';
 
 export default function routes($stateProvider) {
@@ -6,8 +6,8 @@ export default function routes($stateProvider) {
   $stateProvider
     .state('homeLayout.chat', {
       url: '/home',
-      template: chatTemplate,
-      controller: 'ChatController',
+      template: chatGeneralTemplate,
+      controller: 'ChatGeneralController',
       controllerAs: 'chatCtrl',
     })
     .state('homeLayout.chatRoom', {

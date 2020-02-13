@@ -11,8 +11,10 @@ export class EventsService {
     EndPoints,
     ChannelsService,
     SessionService,
-    SessionKey
+    SessionKey,
+    NotificationsService
   ) {
+    ('ngInject');
     this.userServices = UsersService;
     this.messageService = MessageService;
     this.sessionService = SessionService;
@@ -22,10 +24,9 @@ export class EventsService {
     this.SocketEvent = SocketEvent;
     this.EndPoints = EndPoints;
     this.SessionKey = SessionKey;
-    this.currentUser = this.userServices.getUser();
-    // this.Notifications = Notifications;
+    this.notificationsService = NotificationsService;
     this.channelsService = ChannelsService;
-    console.log('startou after refresh');
+    this.currentUser = this.userServices.getUser();
     this.registerSocketEvents();
   }
 
@@ -33,7 +34,6 @@ export class EventsService {
     const { socket, SocketEvent } = this;
 
     socket.on(SocketEvent.CHAT_MESSAGE, data => {
-      console.log('aquiiii tambem mensagem');
       this.receiveMessage(data);
     });
 
@@ -50,21 +50,16 @@ export class EventsService {
     });
 
     socket.on(SocketEvent.NOTIFICATION, data => {
-      console.log('foii aquiiii ');
-      console.log(data);
+      this.notificationsService.send(data);
     });
 
-    // socket.on(SocketEvent.USER_LEFT, function(data) {
-    //   // this.userLeft(data);
-    // });
+    socket.on(SocketEvent.USER_LEFT, function(data) {
+      // this.userLeft(data);
+    });
 
-    // socket.on(SocketEvent.USER_TYPING, function(data) {
-    //   // this.userStartedTyping(data);
-    // });
-
-    // socket.on(SocketEvent.USER_STOPPED_TYPING, function(data) {
-    //   // this.userStoppedTyping(data);
-    // });
+    socket.on(SocketEvent.NOTIFY_TYPING_EVENT, data => {
+      this.typingNotificationEvent(data);
+    });
 
     socket.on(SocketEvent.RECONNECT, () => {
       this.reconnect();
@@ -88,24 +83,13 @@ export class EventsService {
     this.socket.emit(this.SocketEvent.ADD_USER, { username });
   }
 
-  // sendTypingNotification() {
-  //   const data = {
-  //     channel: this.channelsService.activeChannel.id,
-  //     user: this.currentUser,
-  //     type: 'user_typing', // TODO CONSTANTS
-  //   };
+  sendTypingNotification() {
+    this.socket.emit(this.SocketEvent.USER_TYPING);
+  }
 
-  //   this.socket.emit(this.SocketEvent.USER_TYPING, data);
-  // }
-
-  // sendStopTypingNotification() {
-  //   const data = {
-  //     channel: this.channelsService.activeChannel.id,
-  //     user: this.currentUser,
-  //     type: 'user_stopped_typing',
-  //   };
-  //   this.socket.emit(this.SocketEvent.USER_STOPPED_TYPING, data);
-  // }
+  sendStopTypingNotification() {
+    this.socket.emit(this.SocketEvent.USER_STOPPED_TYPING);
+  }
 
   updateData(data) {
     const { user, channel } = data;
@@ -136,29 +120,16 @@ export class EventsService {
     });
   }
 
-  // showNotification(text) {
-  //   const message = new NotificationMessage(text);
-  //   this.Channels.addMessageToChannelWithID(message);
-  //   // this.Notifications.send(text);
-  // }
+  typingNotificationEvent(usersTyping) {
+    this.$rootScope.$broadcast('TypingEvent', usersTyping);
+  }
 
   userJoined(joinedUser) {
     this.$rootScope.$broadcast('UserJoined', joinedUser);
-    // const dmChannel = this.channelsService.createDMChannelForUser(joinedUser);
-    // this.channelsService.addChannel(dmChannel);
-    // const userJoinedMessage = data.username + ' joined';
-    // this.showNotification(userJoinedMessage);
-    // return true;
   }
 
   updateRooms(joinedRooms) {
-    console.log('aquiiii');
     this.$rootScope.$broadcast('UpdateRooms', joinedRooms);
-    // const dmChannel = this.channelsService.createDMChannelForUser(joinedUser);
-    // this.channelsService.addChannel(dmChannel);
-    // const userJoinedMessage = data.username + ' joined';
-    // this.showNotification(userJoinedMessage);
-    // return true;
   }
 
   // userLeft(data) {
@@ -167,14 +138,5 @@ export class EventsService {
   //   this.Channels.removeChannelWithID(dmChannelID);
   //   const leftMessage = data.username + ' left';
   //   this.showNotification(leftMessage);
-  // }
-
-  // userStartedTyping(data) {
-  //   const name = data.user.name;
-  //   this.Channels.channels[data.channel].status = `${name} is typing...`;
-  // }
-
-  // userStoppedTyping(data) {
-  //   this.Channels.channels[data.channel].status = '';
   // }
 }

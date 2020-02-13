@@ -1,7 +1,7 @@
 import { Channel } from '../models/channel.model';
 
 export class ChannelsService {
-  constructor($http, $rootScope, EndPoints, SocketEvent) {
+  constructor($http, $rootScope, EndPoints, SocketEvent, ExceptionService) {
     ('ngInject');
 
     this.activeChannel = {};
@@ -9,6 +9,7 @@ export class ChannelsService {
     this.$http = $http;
     this.SocketEvent = SocketEvent;
     this.EndPoints = EndPoints;
+    this.exceptionService = ExceptionService;
   }
 
   joinChannel(name) {
@@ -21,22 +22,7 @@ export class ChannelsService {
 
   setChannelForChannelID(channelID) {
     this.activeChannel = new Channel(channelID, channelID);
-    // if (this.activeChannel) {
-    //   this.activeChannel.markAsRead();
-    // }
   }
-
-  // createDMChannelForUser(user) {
-  //   return new DMChannel(this.Users.getUser(), user);
-  // }
-
-  // addDMChannelsForUsers(users) {
-  //   const self = this;
-  //   users.forEach(user => {
-  //     var userChannel = self.createDMChannelForUser(new User(user.name));
-  //     // self.addChannel(userChannel);
-  //   });
-  // }
 
   registerChannel(channel) {
     const { alias } = channel;
@@ -44,37 +30,20 @@ export class ChannelsService {
       method: 'post',
       url: `${this.EndPoints.CHANNELS}`,
       data: { alias },
-    });
+    }).catch(this.exceptionService.catcher);
   }
 
   getChannels() {
     return this.$http({
       method: 'get',
       url: `${this.EndPoints.CHANNELS}`,
-    });
+    }).catch(this.exceptionService.catcher);
   }
 
   getUsersByChannel(alias) {
     return this.$http({
       method: 'get',
       url: `${this.EndPoints.CHANNELS}/${alias}/users`,
-    });
+    }).catch(this.exceptionService.catcher);
   }
-
-  // removeChannelWithID(channelID) {
-  //   delete this.channels[channelID];
-  //   for (var i = 0; i < this.channelCollection.length; i++) {
-  //     if (this.channelCollection[i].id === channelID) {
-  //       this.channelCollection.splice(i, 1);
-  //       break;
-  //     }
-  //   }
-  // }
-
-  // addMessageToChannelWithID(message, channelID = this.activeChannel.id) {
-  //   this.channels[channelID].addMessage(message);
-  //   if (this.activeChannel.id !== channelID) {
-  //     this.channels[channelID].unreadCount += 1;
-  //   }
-  // }
 }
