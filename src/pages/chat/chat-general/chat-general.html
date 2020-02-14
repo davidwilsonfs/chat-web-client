@@ -6,7 +6,7 @@
 
             <div class="bd-highlight">
                 <div class="bg-gray px-4 py-2 bg-light">
-                    <p class="h5 mb-0 py-1">Usuários no chat {{chatCtrl.users.length}}</p>
+                    <p class="h5 mb-0 py-1">{{chatCtrl.users.length}} Usuários</p>
                 </div>
 
                 <div class="messages-box">
@@ -27,15 +27,15 @@
 
     <div class="flex-grow-2 bd-highlight full-height pb-0">
         <div class="bg-gray px-4 py-2 bd-highlight">
-            <p class="h5 mb-0 py-1">Canais Disponiveis {{chatCtrl.channels.length}}</p>
+            <p class="h5 mb-0 py-1">{{chatCtrl.channels.length}} Canais Disponiveis </p>
         </div>
         <!-- Channels box-->
 
         <div class="d-flex bd-highlight">
             <div class="flex-fill bd-highlight">
-                <form class="form-inline mt-2 mt-md-0" ng-submit="chatCtrl.registerChannel()">
-                    <input class="form-control mr-sm-2" type="text" ng-model="chatCtrl.newChannel"
-                        placeholder="New channel" aria-label="New Channel">
+                <form name="frm" class="form-inline mt-2 mt-md-0" ng-submit="chatCtrl.submit()">
+                    <input class="form-control mr-sm-2" type="text" ng-model="chatCtrl.newChannel" required
+                        minLength="8" placeholder="New channel" aria-label="New Channel" name="newChannel">
                     <button class="btn btn-primary" type="submit">+</button>
                 </form>
             </div>

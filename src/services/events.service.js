@@ -26,7 +26,6 @@ export class EventsService {
     this.SessionKey = SessionKey;
     this.notificationsService = NotificationsService;
     this.channelsService = ChannelsService;
-    this.currentUser = this.userServices.getUser();
     this.registerSocketEvents();
   }
 
@@ -53,16 +52,20 @@ export class EventsService {
       this.notificationsService.send(data);
     });
 
-    socket.on(SocketEvent.USER_LEFT, function(data) {
-      // this.userLeft(data);
-    });
-
     socket.on(SocketEvent.NOTIFY_TYPING_EVENT, data => {
       this.typingNotificationEvent(data);
     });
 
     socket.on(SocketEvent.RECONNECT, () => {
       this.reconnect();
+    });
+
+    socket.on(SocketEvent.RECONNECT, () => {
+      this.reconnect();
+    });
+
+    socket.on(SocketEvent.ERROR, error => {
+      console.log(error);
     });
   }
 
@@ -115,7 +118,8 @@ export class EventsService {
   }
 
   receiveMessage() {
-    this.messageService.getMessagesByChannel().then(data => {
+    this.messageService.getMessagesByChannel().then(resp => {
+      const { data } = resp;
       this.$rootScope.$broadcast('NewMessage', data);
     });
   }
@@ -132,11 +136,7 @@ export class EventsService {
     this.$rootScope.$broadcast('UpdateRooms', joinedRooms);
   }
 
-  // userLeft(data) {
-  //   this.Users.removeUserWithUsername(data.username);
-  //   const dmChannelID = DMChannel.idForUsernames(this.Users.user.name, data.username);
-  //   this.Channels.removeChannelWithID(dmChannelID);
-  //   const leftMessage = data.username + ' left';
-  //   this.showNotification(leftMessage);
-  // }
+  userLeft() {
+    this.socket.emit(this.SocketEvent.USER_LEFT);
+  }
 }

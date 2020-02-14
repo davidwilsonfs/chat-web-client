@@ -1,32 +1,30 @@
-<div class="">
-    <div class="d-flex bd-highlight">
+<div class="d-flex bd-highlight">
 
-        <div class="p-2 bd-highlight">
-            <div class="d-flex flex-column bd-highlight mb-3">
+    <div class="p-2 bd-highlight">
+        <div class="d-flex flex-column bd-highlight mb-3">
 
-                <!-- Users box-->
+            <!-- Users box-->
 
-                <div class="p-2 flex-fill bd-highlight">
-                    <button class="btn btn-primary" ng-click="chatRoomCtrl.leaveRoom()" type="submit">Sair da ROOM</button>
-                </div>
+            <div class="p-2 flex-fill bd-highlight">
+                <button class="btn btn-primary" ng-click="chatRoomCtrl.leaveRoom()" type="submit">Sair da
+                    ROOM</button>
+            </div>
 
-                <div class="bg-gray px-4 py-2 bg-light">
-                    <p class="h5 mb-0 py-1">Usuários no chat {{chatRoomCtrl.users.length}}</p>
-                </div>
+            <div class="bg-gray px-4 py-2 bg-light">
+                <p class="h5 mb-0 py-1">{{chatRoomCtrl.users.length}} Usuários</p>
+            </div>
 
-                <div class="messages-box">
-                    <div class="list-group rounded-0">
-                        <a class="list-group-item list-group-item-action rounded-0"
-                            ng-repeat="user in chatRoomCtrl.users">
-                            <app-user-card user="user"></app-user-card>
-                        </a>
-                    </div>
+            <div class="messages-box">
+                <div class="list-group rounded-0">
+                    <a class="list-group-item list-group-item-action rounded-0" ng-repeat="user in chatRoomCtrl.users">
+                        <app-user-card user="user"></app-user-card>
+                    </a>
                 </div>
             </div>
         </div>
-        <!-- Chat Box-->
-        <div class="flex-grow-1 bd-highlight full-height pb-0">
-            <app-chat-box></app-chat-box>
-        </div>
+    </div>
+    <!-- Chat Box-->
+    <div class="flex-grow-1 bd-highlight full-height pb-0">
+        <app-chat-box></app-chat-box>
     </div>
 </div>

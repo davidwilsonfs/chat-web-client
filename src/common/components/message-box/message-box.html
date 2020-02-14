@@ -1,15 +1,12 @@
-
-
-<div class="media w-50 mb-3 message" ng-class="{'ml-auto': !$ctrl.isSender}">
-    
-    <img ng-src="{{$ctrl.urlImage}}"
+<div class="media w-50 mb-3 message-text" ng-class="{'ml-auto': !$ctrl.isSender}"><img
+        ng-src="{{$ctrl.urlImage ? $ctrl.urlImage : 'https://www.eyedocs.co.uk/components/com_community/assets/user-anon.png' }}"
         alt="user" width="50" class="rounded-circle">
-    <div class="media-body" ng-class="{ 'ml-3': !$ctrl.isSender}">
-        <span>{{$ctrl.message.user.username}}</span>
-        <div class="rounded py-2 px-3 mb-2" ng-class="{ 'bg-primary': !$ctrl.isSender, 'bg-light': $ctrl.isSender} ">
-            <p class="text-small mb-0 " ng-class="{ 'text-white': !$ctrl.isSender, 'text-muted': $ctrl.isSender} ">{{$ctrl.message.text}}</p>
+    <div class="media-body" ng-class="{'ml-3': !$ctrl.isSender}">
+        <span>{{$ctrl.username}}</span>
+        <div class="rounded py-2 px-3 mb-2" ng-class="{ 'bg-primary': !$ctrl.isSender, 'sender': $ctrl.isSender} ">
+            <p class="text-small mb-0" ng-class="{ 'text-white': !$ctrl.isSender, 'text-muted': $ctrl.isSender} ">
+                {{$ctrl.message.text}}</p>
         </div>
         <p class="small text-muted">{{$ctrl.message.created_at | date : "medium"}}</p>
     </div>
 </div>
-

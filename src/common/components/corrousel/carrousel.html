@@ -1,14 +1,16 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
     <div class="carousel-inner">
-        <div class="carousel-item" ng-class="{'active': $index === 0}" ng-repeat='image in $ctrl.images' >
+        <div class="carousel-item" ng-class="{'active': $index === 0}" ng-repeat='image in $ctrl.images'>
             <img class="mb-4" src="{{image}}" alt="" width="72" height="72">
         </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" ng-click="$ctrl.prev()" data-slide="prev">
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" ng-click="$ctrl.prev()"
+        data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" ng-click="$ctrl.next()" data-slide="next">
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" ng-click="$ctrl.next()"
+        data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>

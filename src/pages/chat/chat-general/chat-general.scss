@@ -29,6 +29,7 @@
 }
 
 .chat-box {
+  background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/disp/2d9dd173426833.5c08f5634ff45.png);
   height: 89vh;
   overflow-y: scroll;
   transform: rotate(180deg);
@@ -51,20 +52,4 @@ input::placeholder {
   padding-bottom: 0px;
 }
 
-.header-typing {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  transform: rotate(180deg);
-  text-align: center;
-  width: 100%;
-  display: table;
-  height: 50px;
-}
 
-.typing-badge {
-  padding: 10px 20px !important;
-  margin-top: 20px;
-  vertical-align: middle;
-  background-color: #4b6b8e !important;
-}

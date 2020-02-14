@@ -11,6 +11,7 @@ export const HeaderComponent = {
     }
 
     signup() {
+      this.eventsService.userLeft();
       this.sessionService.clear();
       this.$location.path('/signin');
     }

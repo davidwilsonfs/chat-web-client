@@ -2,6 +2,8 @@ import uirouter from 'angular-ui-router';
 import ngResource from 'angular-resource';
 import 'ngstorage';
 import 'angular-animate';
+import 'angular-ui-notification';
+import 'angular-messages';
 import { FooterModule } from './components/footer/footer.module';
 import { HeaderModule } from './components/header/header.module';
 import { BoxMessageModule } from './components/message-box/message-box.module';
@@ -16,6 +18,8 @@ export const CommonModule = angular
     uirouter,
     'ngStorage',
     'ngAnimate',
+    'ui-notification',
+    'ngMessages',
     ngResource,
     FooterModule,
     HeaderModule,
@@ -42,16 +46,20 @@ export const CommonModule = angular
     REFRESH_PAGE: 'refreshPage',
     UPDATE_DATA_AFTER_REFRESH: 'updateDataRefresh',
     SWITCH_ROOM_EVENT: 'switchRoom',
+    ERROR: 'error',
   })
   .constant('SessionKey', {
     KEY: 'userData',
   })
   .constant('Websocket', {
-    URL: 'ws://localhost:8986',
+    URL: process.env.WEBSOCKET_URL,
+  })
+  .constant('GeneralChannel', {
+    GENERAL_CHANNEL: process.env.GENERAL_CHANNEL,
   })
   .constant('EndPoints', {
-    USERS: 'http://localhost:8986/api/users', //pegar endpoint da variavel de ambiente
-    CHANNELS: 'http://localhost:8986/api/channels',
-    MESSAGES: 'http://localhost:8986/api/messages',
-    IMAGES: 'http://localhost:8986/api/images',
+    USERS: process.env.USER_ENDPOINT,
+    CHANNELS: process.env.CHANNEL_ENDPOINT,
+    MESSAGES: process.env.MESSAGE_ENDPOINT,
+    IMAGES: process.env.IMAGE_ENDPOINT,
   }).name;

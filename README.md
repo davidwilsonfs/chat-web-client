@@ -1,55 +1,46 @@
-# Angularjs ES6 Webpack boilerplate
-Angular 1.5.9 + ES6 application boilerplate with testing practices
-[![Dependency Status](https://david-dm.org/ziyasal/ng-espack-boilerplate.svg)](https://david-dm.org/ziyasal/ng-espack-boilerplate) [![devDependency Status](https://david-dm.org/ziyasal/ng-espack-boilerplate/dev-status.svg)](https://david-dm.org/ziyasal/ng-espack-boilerplate#info=devDependencies) [![Build Status](https://travis-ci.org/ziyasal/ng-espack-boilerplate.svg)](https://travis-ci.org/ziyasal/ng-espack-boilerplate) [![Coverage Status](https://coveralls.io/repos/ziyasal/ng-espack-boilerplate/badge.svg?branch=master&service=github)](https://coveralls.io/github/ziyasal/ng-espack-boilerplate?branch=master) 
+# Web CHAT AngularJS O.o.
 
->_Inspired from [angular-webpack-workflow](https://github.com/Foxandxss/angular-webpack-workflow)_
+Web Chat para fins de avaliação tecnica, que tem como principal objetivo consumir os serviços da API REST e do Websocket API em Node JS.
 
-##Features
-- [x] [Webpack](https://webpack.github.io/) Setup
-  - [x] [Babel](https://babeljs.io/)
-  - [x] [Isparta](https://github.com/douglasduteil/isparta) [Instrumenter Loader](https://github.com/ColCh/isparta-instrumenter-loader)
-  - [x] [Bootstrap](http://getbootstrap.com/)
-- [x] Gulp.js Setup
-  - [x] [Angular Template Cache](https://github.com/miickel/gulp-angular-templatecache)
-  - [x] [Webpack](https://webpack.github.io/)
-  - [x] [ESLint](http://eslint.org/blog/2014/11/es6-jsx-support/)
-- [x] Basic App Structure by following [Angular Style Guide](https://github.com/johnpapa/angular-styleguide)
-- [x] SEO ready configuration using [angular-seo](https://github.com/steeve/angular-seo)
-- [x] Full fake REST API using [json-server](https://github.com/typicode/json-server)
-- [x] Testing Structure by following [official docs](https://docs.angularjs.org/guide/unit-testing) and [Testing Angular](https://github.com/daniellmb/angular-test-patterns)
-  - [x] [Karma](http://karma-runner.github.io/0.13/index.html)
-  - [x] [Jasmine](http://jasmine.github.io/2.0/introduction.html)
-  - [x] [PhantomJS](http://phantomjs.org/)
-  - [x] Controller test
-  - [x] Service test
-  - [x] Directive test
-  - [x] Filter Test
-  - [x] Http interceptor Test
-  
+# Variaveis de Ambiente .env
 
-##Install
-Clone repo and install npm and bower packages;
+Variaveis de ambiente que devem ser declaradas no arquivo `.env`
+
+| Envs                           |                                          Descrição | Exemplos                |
+| ------------------------------ | -------------------------------------------------: | ----------------------- |
+| WEBSOCKET_URL                  |                                   URL DO WEBSOCKET | ws://localhost:8986     |
+| GENERAL_CHANNEL                |          Canal em que todos os usuários logados serão inseridos a princípio | general                    |
+| USER_ENDPOINT                  |                         endpoint base dos usuários | http://localhost:8986/api/users                            |
+| MESSAGE_ENDPOINT              |         endpoint base das mensagens | http://localhost:8986/api/messages                            |
+| CHANNEL_ENDPOINT               |       endpoint base dos canais   | http://localhost:8986/api/channels                            |
+| IMAGE_ENDPOINT                 |       endpoint base das imagens  | http://localhost:8986/api/images                            |
+                
+
+
+## Instalação
+Instalar os pacotes do npm e do bower;
 
 ```
-git clone https://github.com/ziyasal/ng-espack-boilerplate.git
-cd ng-espack-boilerplate
 npm install
+npm install -g bower
 bower install
-gulp
 ```
 
-## Development
-All scripts are run with `npm run [script]`, for example: `npm run test`.
+## Scripts do sistema
+Todos os scripts rodam com  `npm run [script]`, por exemplo: `npm run dev`.
 
-`build`        - generate a minified build to `public` folder  
-`test`         - run all tests  
-`test:live`    - continuously run unit tests watching for changes  
-`eslint:app`   - lint code in `app` folder  
-`eslint:tests` - lint code in `tests` folder  
 
-See what each script does by looking at the scripts section in `package.json`.
+`build`        - utiliza o webpack para transpilar o código no diretório `build`  
+`dev`          - Roda a aplicação em modo de desenvolvimento utilizando o webpack-dev-server  
+`test`         - Executa todos os testes 
 
-License
-=======
+Os scripts de execução estão todos no `package.json`. 
 
-Code and documentation are available according to the `MIT` License (see [LICENSE](https://github.com/ziyasal/ng-espack-boilerplate/blob/master/LICENSE)).
+
+## Executando dentro do container DOCKER
+
+Para executar a aplicação dentro de um container é necessário executar os seguintes comandos:
+
+`docker-compose build`        - gera a imagem da API a partir do `Dockerfile`  
+`docker-compose up -d`          - Orquestra os containers da API e do MongoDB e levanta a aplicação
+   

@@ -1,23 +1,15 @@
 export class NotificationsService {
-  constructor() {
+  constructor(Notification) {
     ('ngInject');
+    this.notification = Notification;
   }
 
   send(data) {
-    const opt = {
-      body: data.text,
-      icon: data.icon,
-    };
-    if (!('Notification' in window)) {
-      alert('This browser does not support desktop notification');
-    } else if (Notification.permission === 'granted') {
-      const notification = new Notification(`${data.room} notify !`, opt);
-    } else if (Notification.permission !== 'denied') {
-      Notification.requestPermission(function(permission) {
-        if (permission === 'granted') {
-          const notification = new Notification(text, opt);
-        }
-      });
-    }
+    const { text, icon, username } = data;
+
+    this.notification.success({
+      message: ` <img style="width: 60px"src="${icon}"> <span>${username}<span>`,
+      title: text,
+    });
   }
 }

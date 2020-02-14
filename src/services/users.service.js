@@ -2,7 +2,6 @@ import { User } from '../models/user.model';
 
 export class UsersService {
   constructor(
-    socket,
     $http,
     $rootScope,
     ExceptionService,
@@ -13,7 +12,6 @@ export class UsersService {
   ) {
     ('ngInject');
     this.$rootScope = $rootScope;
-    this.socket = socket;
     this.SocketEvent = SocketEvent;
     this.SessionService = SessionService;
     this.exceptionService = ExceptionService;

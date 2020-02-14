@@ -33,16 +33,12 @@ export class SigninController {
     this.eventsService.addUser(username);
   }
 
-  processLogin(shouldGenerateUsername) {
-    if (shouldGenerateUsername) {
-      this.attemptToLogin(this.Users.randomID());
-    } else {
-      const { username, imageSelected } = this;
-      const obj = {
-        username,
-        urlImage: imageSelected,
-      };
-      this.attemptToLogin(obj);
-    }
+  submit(isValid) {
+    const { username, imageSelected } = this;
+    const obj = {
+      username,
+      urlImage: imageSelected,
+    };
+    this.attemptToLogin(obj);
   }
 }

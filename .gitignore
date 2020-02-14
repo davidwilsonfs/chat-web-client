@@ -3,7 +3,6 @@
 /bower_components
 /src/logs/
 /dist
+/build
 package-lock.json
-*.log
-*.env
-undefined
+# *.log

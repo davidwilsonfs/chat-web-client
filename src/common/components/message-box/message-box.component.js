@@ -9,6 +9,8 @@ export const BoxMessageComponent = {
     constructor(UsersService) {
       'ngInject';
       this.usersService = UsersService;
+      this.username = '';
+      this.urlImage = null;
     }
 
     $onInit() {
@@ -16,10 +18,14 @@ export const BoxMessageComponent = {
 
       const { username: currentUsername } = this.usersService.getUser();
       const { user } = this.message;
-      const { username: usernameSender, urlImage } = user;
-      this.urlImage = urlImage;
-      if (currentUsername === usernameSender) {
-        this.isSender = true;
+
+      if (user) {
+        const { username: usernameSender, urlImage } = user;
+        this.username = usernameSender;
+        this.urlImage = urlImage;
+        if (currentUsername === usernameSender) {
+          this.isSender = true;
+        }
       }
     }
   },

@@ -28,7 +28,7 @@ export class ChatGeneralController {
     });
   }
 
-  registerChannel() {
+  submit() {
     this.channelsService
       .registerChannel({ alias: this.newChannel })
       .then(() => this.eventsService.emitChange())

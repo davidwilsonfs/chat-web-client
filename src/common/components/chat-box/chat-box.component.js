@@ -6,10 +6,11 @@ export const ChatBoxComponent = {
   },
   template,
   controller: class ChatBoxController {
-    constructor($scope, EventsService) {
+    constructor($scope, EventsService, UsersService) {
       'ngInject';
       this.$scope = $scope;
       this.eventsService = EventsService;
+      this.usersService = UsersService;
     }
 
     $onInit() {
@@ -25,11 +26,16 @@ export const ChatBoxComponent = {
 
     scopeEvents() {
       this.$scope.$on('NewMessage', (event, data) => {
-        this.messages = data.data.reverse();
+        this.messages = data.reverse();
       });
 
       this.$scope.$on('TypingEvent', (event, data) => {
-        this.usersTyping = data;
+        const user = this.usersService.getUser();
+
+        this.usersTyping = data
+          .filter(username => username !== user.username)
+          .reduce((prev, next) => `${prev},${next} is typing`, '')
+          .slice(1);
       });
     }
 
@@ -77,7 +83,11 @@ export const ChatBoxComponent = {
     }
 
     messageIsValid(messageText) {
-      return messageText.length > 0;
+      if (messageText) {
+        return messageText.length > 0;
+      }
+
+      return false;
     }
 
     didReachTypingTimeout(timeDifference, timeout, isTyping) {

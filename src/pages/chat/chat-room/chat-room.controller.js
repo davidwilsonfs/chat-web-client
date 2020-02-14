@@ -36,10 +36,6 @@ export class ChatRoomController {
     this.$scope.$on('UserJoined', (event, data) => {
       this.users = data;
     });
-
-    this.$scope.$on('NewMessage', (event, data) => {
-      this.messages = data.data;
-    });
   }
 
   leaveRoom() {

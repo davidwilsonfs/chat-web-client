@@ -8,8 +8,12 @@
   border-radius: 0.5rem;
 }
 
-.message{
+.message-text {
   transform: rotate(180deg);
+}
+
+.sender {
+  background-color: #ecebe7 !important;
 }
 
 input::placeholder {
