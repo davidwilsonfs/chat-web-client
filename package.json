@@ -79,7 +79,7 @@
     "bootstrap": "4.3.1",
     "dotenv": "^8.2.0",
     "font-awesome": "4.7.0",
-    "jquery": "3.3.1",
+    "jquery": "3.4.1",
     "ngstorage": "^0.3.11",
     "popper.js": "1.14.7",
     "rx-angular": "^1.1.3"
